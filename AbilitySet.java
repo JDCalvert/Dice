@@ -34,11 +34,13 @@ public class AbilitySet
 		
 		for (int i=0; i<numAbilities; i++)
 		{
+			int score = integers[i];
+			
 			if (i>0) abilities += ",";
+			if (score < 10) abilities += " ";
+			
 			abilities += integers[i];
 		}
-		
-		System.out.println(abilities);
 	}
 	private int rollAbilityScore(Random rand)
 	{
