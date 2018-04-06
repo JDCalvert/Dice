@@ -4,7 +4,7 @@ import java.util.Collections;
 
 public class AbilitySet
 {
-	private final static int numRolls = 4;
+	private final static int numRolls = 100;
 	private final static int numAbilities = 6;
 
 	public String abilities = "";
@@ -43,19 +43,21 @@ public class AbilitySet
 		}
 	}
 	private int rollAbilityScore(Random rand)
-	{
-		int total = 0;
-		int min = 6;
-		
+	{		
+		Integer[] rolls = new Integer[numRolls];
 		for (int i=0; i<numRolls; i++)
 		{
-			int roll = rand.nextInt(6) + 1;
-			
-			total += roll;
-			min = Math.min(min, roll);
+			rolls[i] = rand.nextInt(6) + 1;
 		}
 		
-		total -= min;
+		Arrays.sort(rolls, Collections.reverseOrder());
+		
+		int total = 0;
+		for (int i=0; i<3; i++)
+		{
+			total += rolls[i];
+		}
+		
 		return total;
 	}
 	
